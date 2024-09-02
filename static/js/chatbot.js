@@ -99,27 +99,41 @@ function stopSpeech() {
   stopBot = true;
 }
 
+
 async function fetchReply(userInput) {
   try {
+    let desiredText;
+
+    // Check if the user's input is a greeting
+    const lowerInput = userInput.trim().toLowerCase();
+    if (lowerInput === "hi" || lowerInput === "hello" || lowerInput === "hii") {
+      desiredText = "How can I help you today?"; // Respond only with this message
+
+      // Display and speak the response, then return early
+      appendMessage("Bot", desiredText);
+      speak(desiredText);
+      return; // Stop further processing
+    }
+
+    // Generate a response from the AI model for other inputs
     const result = await model.generateContent(userInput);
     const response = await result.response;
-    let text = await response.text();
+    desiredText = await response.text();
 
-    text = text.replace(/\*/g, "");
-    text = text.replace(/\s(?=\w)/g, " ");
+    // Display and speak the response
+    appendMessage("Bot", desiredText);
+    speak(desiredText);
 
-    const formattedText = text.replace(/(?:\r\n|\r|\n)/g, "\n");
-    appendMessage("Bot", formattedText);
-    speak(formattedText);
   } catch (error) {
-    appendMessage(
-      "Bot",
-      "Sorry, I am having trouble connecting to the server."
-    );
-    speak("Sorry, I am having trouble connecting to the server.");
+    const errorMessage = "Sorry, I am having trouble connecting to the server.";
+    appendMessage("Bot", errorMessage);
+    speak(errorMessage);
     console.error("Error:", error);
   }
 }
+
+
+
 
 function startRecognition() {
   recognition.start();
