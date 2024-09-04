@@ -1,13 +1,27 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, redirect, url_for, session, send_file
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
 import pandas as pd
 import re
 from io import BytesIO
 from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = '770b0b8509abe280460e773fb9e4cb36c6f8d3271dcfdae3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+db = SQLAlchemy(app)
+
+# Define the User model
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(100), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(60), nullable=False)
+
+with app.app_context():
+    db.create_all()
 
 # Load the data
 places_df = pd.read_csv('dataset/Places_decoded.csv')
@@ -22,14 +36,21 @@ def truncate_description(description, sentence_limit=2):
 
 @app.route('/')
 def home():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
     return render_template('index.html')
 
 @app.route('/chatbot')
 def chatbot():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
     return render_template('indexchatbot.html')
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    
     if request.method == 'POST':
         city_name = request.form['city_name']
         duration_days = int(request.form['duration_days'])
@@ -69,6 +90,9 @@ def search():
 
 @app.route('/download_pdf', methods=['POST'])
 def download_pdf():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    
     city_name = request.form['city_name']
     city_desc = request.form['city_desc']
     duration_days = int(request.form['duration_days'])
@@ -101,6 +125,36 @@ def download_pdf():
 
     buffer.seek(0)
     return send_file(buffer, as_attachment=True, download_name=f"{city_name}_places.pdf", mimetype='application/pdf')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        user = User.query.filter_by(email=email).first()
+        if user and check_password_hash(user.password, password):
+            session['user_id'] = user.id
+            return redirect(url_for('home'))  # Redirect to the 'home' route after successful login
+        else:
+            return render_template('login.html', error='Invalid email or password')
+    return render_template('login.html')
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        password = generate_password_hash(request.form['password'])
+        user = User(username=username, email=email, password=password)
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for('login'))
+    return render_template('register.html')  # Adjust this to render a registration page, if you have one
+
+@app.route('/logout')
+def logout():
+    session.pop('user_id', None)
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)
