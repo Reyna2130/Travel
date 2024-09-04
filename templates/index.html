@@ -18,15 +18,47 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/fakeLoader.min.css') }}">
 
-    <!--chatbot
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style3.css') }}">
--->
     <!--Google fonts link for icon-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <script src="{{ url_for('static', filename='js/script3.js') }}" defer></script>
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
 
 </head>
 <body>
@@ -41,7 +73,16 @@
 
     <div class="icons">
         <i class="fas fa-search" id="search-btn" style="display: none;"></i>
-        <i class="fas fa-user" id="login-btn"></i>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown">
+            <i class="fas fa-user dropbtn" id="login-btn"></i>
+            <div class="dropdown-content">
+                <a href="#">Profile</a>
+                <a href="#">Help/Support</a>
+                <a href="#">Sign Out</a>
+            </div>
+        </div>
     </div>
 
     <form action="" class="search-bar-container">
@@ -52,25 +93,6 @@
 </header>
 
 <!-- header section ends -->
-
-<!-- login form container  -->
-
-<div class="login-form-container">
-
-    <i class="fas fa-times" id="form-close"></i>
-
-    <form action="">
-        <h3>Login</h3>
-        <input type="email" class="box" placeholder="Enter Your Email">
-        <input type="password" class="box" placeholder="Enter Your Password">
-        <input type="submit" value="login now" class="btn">
-        <input type="checkbox" id="remember">
-        <label for="remember">Remember me</label>
-        <p>Forgot password? <a href="#">Click here</a></p>
-        <p>Don't have an account? <a href="#">Register now</a></p>
-    </form>
-
-</div>
 
 <!-- chatbot -->
 
@@ -131,12 +153,8 @@
                 <input type="number" id="duration_days" name="duration_days" placeholder="Days" required>
             </div>
             <div class="inputBox">
-                <h3>Arrivals</h3>
-                <input type="date">
-            </div>
-            <div class="inputBox">
-                <h3>Leaving</h3>
-                <input type="date">
+                <h3>Budget for Hotels</h3>
+                <input type="number" id="budget" name="budget" placeholder="Budget in Rupees" required>
             </div>
             
             <input type="submit" class="btn btn-submit" value="Plan Tour">
