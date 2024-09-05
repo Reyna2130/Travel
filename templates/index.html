@@ -73,17 +73,18 @@
 
     <div class="icons">
         <i class="fas fa-search" id="search-btn" style="display: none;"></i>
-
+    
         <!-- Dropdown Menu -->
         <div class="dropdown">
             <i class="fas fa-user dropbtn" id="login-btn"></i>
             <div class="dropdown-content">
-                <a href="#">Profile</a>
-                <a href="#">Help/Support</a>
-                <a href="#">Sign Out</a>
+                <a href="/profile">Profile</a>
+                <a href="/chatbot">Help/Support</a> <!-- Link to chatbot -->
+                <a href="/login">Sign Out</a> <!-- Link to the main page -->
             </div>
         </div>
     </div>
+    
 
     <form action="" class="search-bar-container">
         <input type="search" id="search-bar" placeholder="search here...">
@@ -103,8 +104,9 @@
     <div class="content wow fadeInUp" data-wow-duration="4s">
         <h3><span>Discover Your Next Adventure With AI</span></h3>
         <p>Personalized itineraries at your fingertip</p>
-        <a href="#" class="btn">Discover more</a>
+        <a href="{{ url_for('discover_more') }}" class="btn">Discover more</a>
     </div>
+    
 
     <div class="controls">
         <span class="vid-btn active" data-src="{{ url_for('static', filename='images/vid-5.mp4') }}"></span>
