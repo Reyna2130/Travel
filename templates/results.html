@@ -31,7 +31,17 @@
         </div>
         <p><strong>Description:</strong> {{ city_desc }}</p>
         <p><strong>Ideal Duration:</strong> {{ ideal_duration }}</p><br>
-        
+
+        <!-- Add the Recommended Hotel Section -->
+        <div class="hotel-recommendation">
+            <h3>Recommended Hotel</h3>
+            {% if recommended_hotel %}
+                <p><strong>Hotel Name:</strong> {{ recommended_hotel }}</p>
+            {% else %}
+                <p>No hotel recommendation available for this city and price.</p>
+            {% endif %}
+        </div>
+
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" id="day-tabs" role="tablist">
             {% for day in range(duration_days) %}
@@ -74,13 +84,8 @@
                 </form>
             </div>
         </div>
-        
-        
-
     </div>
 
-    
-    
     <!-- Include jQuery and Bootstrap JS (Optional) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
