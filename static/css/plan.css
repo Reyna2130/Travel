@@ -29,9 +29,7 @@ body::before {
     border-radius: 8px;
 }
 
-
 /* Other existing styles */
-
 .h1-container {
     background-color: rgba(243, 238, 222, 0.9); /* Light yellow background with slight transparency */
     padding: 20px;
@@ -53,8 +51,6 @@ body::before {
     margin: 0; /* Remove default margin */
     animation: bounceIn 1s ease;
 }
-
-
 
 /* Keyframe for bounceIn animation */
 @keyframes bounceIn {
@@ -164,7 +160,6 @@ a:hover {
     border-width: 1px; /* Slightly thicker border to make it stand out */
 }
 
-
 .tab-content {
     border: 1px solid #ddd; /* Light border for tab content */
     border-top: none;
@@ -196,16 +191,6 @@ a:hover {
     margin-bottom: 10px; /* Space between list items */
     border: 1px solid #ddd; /* Light border for list items */
 }
-
-
-
-
-
-
-
-
-
-
 
 .box {
     padding: 20px;
@@ -242,62 +227,25 @@ a:hover {
     font-weight: bold;
 }
 
-
-
-
-
-
 .button-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 30px;
 }
 
 .pdf-download-container {
     display: flex;
     align-items: center;
-    margin-top: 32px;
     background-color: rgba(88, 30, 30, 0.39);
 }
 
 .pdf-download-container form {
     margin: 10; /* Ensure the form margin doesn't affect alignment */
 }
+
 /* Update button styles to brown shades */
-.button-container a,
-.pdf-download-container a {
-    background-color: #6f4e37; /* Medium brown color for buttons */
-    color: #fff; /* White text color for contrast */
-    border: none; /* Remove border if present */
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.button-container a:hover,
-.pdf-download-container a:hover {
-    background-color: #5a3e2c; /* Darker brown for hover effect */
-}
-
-
-
-
-
-
-
-/* Style for Go Back and Download PDF buttons */
-.btn-primary {
-    background-color: #6f4e37; /* Medium brown color */
-    color: #fff; /* White text */
-    border: none; /* Remove border if present */
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-/* Apply styles to the button element inside the form */
+.button-container .btn-primary,
 .pdf-download-container .btn-primary {
     background-color: #6f4e37; /* Medium brown color */
     color: #fff; /* White text */
@@ -308,6 +256,7 @@ a:hover {
     transition: background-color 0.3s ease;
 }
 
+.button-container .btn-primary:hover,
 .pdf-download-container .btn-primary:hover {
     background-color: #5a3e2c; /* Darker brown for hover effect */
 }
