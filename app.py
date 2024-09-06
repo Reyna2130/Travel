@@ -10,7 +10,7 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key_here'
+app.config['SECRET_KEY'] = '770b0b8509abe280460e773fb9e4cb36c6f8d3271dcfdae3'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
@@ -86,7 +86,7 @@ def search():
         return redirect(url_for('login'))
     
     if request.method == 'POST':
-        city_name = request.form['city_name']
+        city_name = request.form['city_name'].capitalize()  # Capitalize city name
         duration_days = int(request.form['duration_days'])
         budget = float(request.form['budget'])
 
@@ -128,6 +128,7 @@ def search():
             return render_template('index.html', error="City not found")
 
     return render_template('index.html')
+
 
 @app.route('/download_pdf', methods=['POST'])
 def download_pdf():
@@ -221,6 +222,7 @@ def profile():
     plans = []
     for plan in saved_plans:
         plans.append({
+            'id': plan.id,  # Add the id here
             'city_name': plan.city_name,
             'city_desc': plan.city_desc,
             'duration_days': plan.duration_days,
@@ -241,17 +243,27 @@ def save_plan():
 
     user_id = session['user_id']
 
-    # Create a new saved plan
     new_plan = SavedPlan(
         user_id=user_id,
         city_name=city_name,
         city_desc=city_desc,
         duration_days=duration_days,
-        places=json.dumps(places)  # Convert list to JSON string
+        places=json.dumps(places)  # Store places as JSON
     )
-
     db.session.add(new_plan)
     db.session.commit()
+
+    return redirect(url_for('profile'))
+
+@app.route('/delete_plan/<int:plan_id>', methods=['POST'])
+def delete_plan(plan_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    plan = SavedPlan.query.get(plan_id)
+    if plan and plan.user_id == session['user_id']:
+        db.session.delete(plan)
+        db.session.commit()
 
     return redirect(url_for('profile'))
 
