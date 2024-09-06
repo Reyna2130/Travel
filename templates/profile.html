@@ -17,11 +17,23 @@
         .plan-item {
             padding: 10px;
             border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .go-back-btn {
+            position: absolute;
+            top: 10px;
+            right: 100px;
         }
     </style>
 </head>
 <body>
     <div class="container profile-container">
+        <a href="{{ url_for('home') }}" class="btn btn-secondary go-back-btn">Go Back</a>
         <h1>User Profile</h1>
         <p><strong>Name:</strong> {{ user_name }}</p>
         <p><strong>Email:</strong> {{ user_email }}</p>
@@ -41,6 +53,10 @@
                                     <li>{{ place }}</li>
                                 {% endfor %}
                             </ul>
+                            <!-- Add the delete button -->
+                            <form action="{{ url_for('delete_plan', plan_id=plan.id) }}" method="post" class="delete-btn">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
                         </li>
                     {% endfor %}
                 </ul>
