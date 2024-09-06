@@ -4,14 +4,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import pandas as pd
 import re
 import json
-
 from io import BytesIO
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '770b0b8509abe280460e773fb9e4cb36c6f8d3271dcfdae3'
+app.config['SECRET_KEY'] = 'your_secret_key_here'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
@@ -34,7 +33,6 @@ class SavedPlan(db.Model):
     user = db.relationship('User', backref=db.backref('saved_plans', lazy=True))
 
     def get_places(self):
-        import json
         return json.loads(self.places)
 
 with app.app_context():
@@ -131,7 +129,6 @@ def search():
 
     return render_template('index.html')
 
-
 @app.route('/download_pdf', methods=['POST'])
 def download_pdf():
     if 'user_id' not in session:
@@ -178,7 +175,7 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user and check_password_hash(user.password, password):
             session['user_id'] = user.id
-            return redirect(url_for('home'))  # Redirect to the 'home' route after successful login
+            return redirect(url_for('home'))
         else:
             return render_template('login.html', error='Invalid email or password')
     return render_template('login.html')
@@ -193,7 +190,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('login'))
-    return render_template('register.html')  # Adjust this to render a registration page, if you have one
+    return render_template('register.html')
 
 @app.route('/logout')
 def logout():
@@ -212,9 +209,9 @@ def profile():
         return redirect(url_for('login'))
 
     user_id = session['user_id']
-    user = db.session.get(User, user_id)  # Use db.session.get instead of User.query.get
+    user = User.query.get(user_id)  # Fetch user from the database
     if not user:
-        return redirect(url_for('login'))  # Handle case where user might not be found
+        return redirect(url_for('login'))
     
     saved_plans = SavedPlan.query.filter_by(user_id=user_id).all()
 
