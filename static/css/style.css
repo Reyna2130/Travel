@@ -573,8 +573,9 @@ header .search-bar-container label:hover{
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  justify-content: left; /* Center align items horizontally */
+  justify-content: right; /* Center align items horizontally */
   margin-bottom: 1rem;
+  justify-items: end;
 }
 
 .footer .box-container .box {
@@ -584,6 +585,8 @@ header .search-bar-container label:hover{
   flex: 1 1 5rem; /* Adjust based on desired width */
   max-width: 100%; /* Prevents the box from overflowing */
   box-sizing: border-box; /* Includes padding and border in the element’s total width and height */
+  justify-items: end;
+
 }
 
 .footer .box-container .box h3 {
@@ -598,14 +601,14 @@ header .search-bar-container label:hover{
   font-size: 1.5rem;
   padding: 1.7rem 0;
   color: #eee;
-  text-align: left; /* Center-align text paragraphs */
+  text-align: justify; /* Center-align text paragraphs */
   margin: 0; /* Remove default margin */
 }
 
 .footer .box-container .box a {
   display: block;
   font-size: 1.5rem;
-  padding: .7rem 0;
+  padding: 1.7rem 0;
   color: #eee;
   text-align: left; /* Center-align links */
   margin: 0; /* Remove default margin */
