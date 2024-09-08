@@ -442,11 +442,12 @@ header .search-bar-container label:hover{
 }
 
 .home .controls{
-  padding:1rem;
+  /*padding:1rem;
   border-radius: 5rem;
   background: rgb(0 0 0);
   position: relative;
-  top:10rem;
+  top:10rem;*/
+  display: none;
 }
 
 .home .controls .vid-btn{
