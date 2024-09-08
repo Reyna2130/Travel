@@ -20,7 +20,7 @@
 
     <!--Google fonts link for icon-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <script src="{{ url_for('static', filename='js/script3.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -55,26 +55,27 @@
 <!-- home section starts  -->
 
 <section class="home" id="home">
-<br>
-<br>
+
     <div class="content wow fadeInUp" data-wow-duration="4s">
-        <br>
+        
         <h3><span>Discover Your Next Adventure With AI</span></h3>
         <p>Personalized itineraries at your fingertip</p>
         <a href="{{ url_for('discover_more') }}" class="btn">Discover more</a>
     </div>
     
 
-   <!-- <div class="controls">
+    <div class="controls">
         <span class="vid-btn active" data-src="{{ url_for('static', filename='images/vid-5.mp4') }}"></span>
-        <span class="vid-btn" data-src="{{ url_for('static', filename='images/vid-2.mp4') }}"></span>
-        <span class="vid-btn" data-src="{{ url_for('static', filename='images/vid-3.mp4') }}"></span>
-        <span class="vid-btn" data-src="{{ url_for('static', filename='images/vid-4.mp4') }}"></span>
-        <span class="vid-btn" data-src="{{ url_for('static', filename='images/vid-1.mp4') }}"></span>
-    </div> -->
+<span class="vid-btn" data-src="{{ url_for('static', filename='images/vid-2.mp4') }}"></span>
+<span class="vid-btn" data-src="{{ url_for('static', filename='images/vid-3.mp4') }}"></span>
+<span class="vid-btn" data-src="{{ url_for('static', filename='images/vid-4.mp4') }}"></span>
+<span class="vid-btn" data-src="{{ url_for('static', filename='images/vid-1.mp4') }}"></span>
+
+    </div> 
 
     <div class="video-container">
         <video src="{{ url_for('static', filename='images/vid-5.mp4') }}" id="video-slider" loop autoplay muted></video>
+
     </div> 
 
 </section>
@@ -286,7 +287,8 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <!-- custom js file link  -->
-<script src="{{ url_for('static', filename='js/aos.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/aos.js') }}"></script>
+
 <script src="{{ url_for('static', filename='js/jquery.totop.js') }}"></script>
 <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
@@ -294,7 +296,9 @@
 <script src="{{ url_for('static', filename='js/lightbox.js') }}"></script>
 
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-<script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+
+<script type="module" src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+
 
 </body>
 </html>
