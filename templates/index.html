@@ -55,25 +55,27 @@
 <!-- home section starts  -->
 
 <section class="home" id="home">
-
+<br>
+<br>
     <div class="content wow fadeInUp" data-wow-duration="4s">
+        <br>
         <h3><span>Discover Your Next Adventure With AI</span></h3>
         <p>Personalized itineraries at your fingertip</p>
         <a href="{{ url_for('discover_more') }}" class="btn">Discover more</a>
     </div>
     
 
-    <div class="controls">
+   <!-- <div class="controls">
         <span class="vid-btn active" data-src="{{ url_for('static', filename='images/vid-5.mp4') }}"></span>
         <span class="vid-btn" data-src="{{ url_for('static', filename='images/vid-2.mp4') }}"></span>
         <span class="vid-btn" data-src="{{ url_for('static', filename='images/vid-3.mp4') }}"></span>
         <span class="vid-btn" data-src="{{ url_for('static', filename='images/vid-4.mp4') }}"></span>
         <span class="vid-btn" data-src="{{ url_for('static', filename='images/vid-1.mp4') }}"></span>
-    </div>
+    </div> -->
 
     <div class="video-container">
         <video src="{{ url_for('static', filename='images/vid-5.mp4') }}" id="video-slider" loop autoplay muted></video>
-    </div>
+    </div> 
 
 </section>
 
@@ -217,6 +219,21 @@
 </section>
 
 <!-- gallery section ends -->
+
+<section class="brand-container">
+
+    <div class="swiper-container brand-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="{{ url_for('static', filename='images/1.jpg') }}" alt="Brand 1"></div>
+            <div class="swiper-slide"><img src="{{ url_for('static', filename='images/2.jpg') }}" alt="Brand 2"></div>
+            <div class="swiper-slide"><img src="{{ url_for('static', filename='images/3.jpg') }}" alt="Brand 3"></div>
+            <div class="swiper-slide"><img src="{{ url_for('static', filename='images/4.jpg') }}" alt="Brand 4"></div>
+            <div class="swiper-slide"><img src="{{ url_for('static', filename='images/5.jpg') }}" alt="Brand 5"></div>
+            <div class="swiper-slide"><img src="{{ url_for('static', filename='images/6.jpg') }}" alt="Brand 6"></div>
+        </div>
+    </div>
+
+</section>
 
 <!-- footer section starts  -->
 
