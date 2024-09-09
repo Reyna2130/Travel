@@ -84,8 +84,8 @@ def main(city_file, hotel_data_file, city_input, budget):
 
 # Example usage
 if __name__ == "__main__":
-    city_file = 'City.csv'
-    hotel_data_file = 'google_hotel_data_clean_v2.csv'
+    city_file = 'dataset/City.csv'
+    hotel_data_file = 'dataset/google_hotel_data_clean_v2.csv'
     
     # Get user input for city and price range
     city_input = input("Enter the city: ")
