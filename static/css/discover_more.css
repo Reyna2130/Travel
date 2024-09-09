@@ -23,9 +23,15 @@
     transform-style: preserve-3d;
     z-index: -1;
 }
-
 .background {
-    transform: translateZ(-40px) scale(5.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translateZ(-40px) scale(5.1); /* Same 3D effect as before */
+    z-index: -1; /* Keep it behind all other content */
 }
 
 .foreground {
@@ -42,7 +48,7 @@
 
 h1 {
     position: fixed;
-    top: 16rem;
+    top: 8rem;
     left: 50%;
     transform: translateX(-50%);
     font-size: 5rem;
@@ -96,7 +102,7 @@ section {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;
+    z-index: 1; /* Ensure text is above the video */
 }
 
 /* Updated paths for images */
