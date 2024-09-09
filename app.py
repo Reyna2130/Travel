@@ -41,7 +41,8 @@ with app.app_context():
 # Load the data
 places_df = pd.read_csv('dataset/Places_decoded.csv')
 cities_df = pd.read_csv('dataset/City.csv')
-merged_data = pd.read_csv('dataset/merged_file.csv')
+merged_data = pd.read_csv('dataset/merged_file.csv', encoding='ISO-8859-1')
+
 
 def truncate_description(description, sentence_limit=2):
     """ Truncate description to a given number of sentences and remove leading special characters. """
