@@ -479,6 +479,14 @@ header .search-bar-container label:hover{
   width:100%;
 }
 
+.book .row .image video {
+  width: 90%; /* Ensure the video takes the full width */
+  object-fit: cover; /* Ensures the video maintains aspect ratio */
+  height: auto; /* Adjust the height as needed */
+  border-radius: .5rem; /* Optional: to match any styling */
+}
+
+
 .book .row form{
   flex:1 1 40rem;
   padding:2rem;
