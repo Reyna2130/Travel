@@ -59,12 +59,6 @@ Install the required dependencies:
     pip install -r requirements.txt
 ```
 
-Set up the SQLite database:
-```bash
-    flask shell
->>> from app import db
->>> db.create_all()
-```
 Run the recommendation.py once:
 ```bash
     python recommendation.py
