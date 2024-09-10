@@ -87,7 +87,7 @@ Run the Flask application:
 
 ## Documentation
 
-Documentation is available here: [Project Report for TripGenie.pdf](Project Report for TripGenie.pdf)
+Documentation is available here: [Documentaion.pdf](Documentation.pdf)
 
 
 ## Contributing
