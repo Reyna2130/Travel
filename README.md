@@ -79,8 +79,12 @@ Run the Flask application:
 
 ## Dataset
 
-1. Places Dataset: Used to provide recommendations on the best places to visit based on user preferences.
-2. Hotels Dataset: Used for recommending accommodations that fit within the user's specified budget.
+1. City.csv: Contains data on various cities used for destination recommendations.
+2. google_hotel_data_clean_v2.csv: Provides information on hotels, including facilities and ratings.
+3. merged_file.csv: A merged dataset combining relevant data for recommendations.
+4. Places.csv: Includes details on various places of interest.
+5. Places_decoded.csv: Contains additional decoded information for places of interest.
+
 
 
 ## Contributing
