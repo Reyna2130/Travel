@@ -85,6 +85,9 @@ Run the Flask application:
 4. Places.csv: Includes details on various places of interest.
 5. Places_decoded.csv: Contains additional decoded information for places of interest.
 
+## Documentation
+
+Documentation is available here: [Project Report for TripGenie.pdf](Project Report for TripGenie.pdf)
 
 
 ## Contributing
