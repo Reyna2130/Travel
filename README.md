@@ -83,7 +83,7 @@ Run the Flask application:
 2. google_hotel_data_clean_v2.csv: Provides information on hotels, including facilities and ratings.
 3. merged_file.csv: A merged dataset combining relevant data for recommendations.
 4. Places.csv: Includes details on various places of interest.
-5. Places_decoded.csv: Contains additional decoded information for places of interest(Use tempCodeRunner.py file on Places.csv to generate this file).
+5. Places_decoded.csv: Contains additional decoded information for places of interest(Use tempCodeRunnerFile.py file on Places.csv to generate this file).
    
 
 ## Documentation
